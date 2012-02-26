@@ -104,9 +104,17 @@ class Main
 				case TSymbolClass(symbols): 
 					for (s in symbols) {
 						var nstr:String = s.className;
-						if (nstr == ori ) {
-							s.className  = dest ;
+						if (replaceMode == "-p") {
+							var index:Int = nstr.indexOf(ori_pack);
+							if (index != -1) {
+								s.className  = dest + nstr.substr(ori_pack.length);
+							}
+						} else {
+							if (nstr == ori ) {
+								s.className  = dest ;
+							}
 						}
+						
 					}
 				case TActionScript3(data, context): 
 					
